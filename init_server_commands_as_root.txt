@@ -1,0 +1,51 @@
+apt-get update
+apt-get install apache2
+apt-get install mysql-server
+apt-get install php5 php-pear php5-mysql
+apt-get install php5-intl
+a2enmod rewrite
+a2enmod userdir
+a2enmod php5
+apt-get install unzip
+apt-get install curl php5-cli
+apt-get install ext-curl
+apt-get install php5-curl
+apt-get install composer
+curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+apt-get install phpmyadmin
+
+comment out "if mod usermod" section in /etc/apache2/mods-available/php5.conf to enable php in userdirs
+service apache2 restart
+
+
+
+---
+
+caricare HEv3Install sulla directory di root
+
+usare "install_hev3.sh" con parametri "install [nomeistanza]" per installare HEv3 con un suo utente
+
+fare da root:
+
+su - nomeutente
+
+usare:
+
+crontab -e
+
+per configurare l'esecuzione di 
+
+http://[SERVER IP]/~[USERNAME]/HEv3/researches/process
+
+con una frequenza sufficiente
+
+
+---
+
+caricare HEv3Report sulla cartella public_html dell'utente che ha HE installato
+
+configurarlo (vedere manuale)
+
+configurare l'esecuzione dello script "MonthlyReport.sh" il primo del mese, ogni mese, usando "crontab -e"
+
+(tipo public_html/HEv3Report/MonthlyReport.sh 39,40,43,44,45,46,47,48 )
